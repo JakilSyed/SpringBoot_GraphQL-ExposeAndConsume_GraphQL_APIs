@@ -1,0 +1,290 @@
+{
+    "info": {
+        "name": "GraphQL Demo",
+        "_postman_id": "22acff09-3936-4782-943f-e26a18affdaa",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "findAll",
+            "request": {
+                "url": {
+                    "raw": "http://localhost:8080/graphql",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "graphql"
+                    ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "query findAll {\r\n    findAll {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}",
+                        "variables": ""
+                    },
+                    "options": {
+                        "raw": {
+                            "language": "text"
+                        }
+                    }
+                }
+            },
+            "response": [],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "findOne",
+            "request": {
+                "url": {
+                    "raw": "http://localhost:8080/graphql",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "graphql"
+                    ]
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "default"
+                    }
+                ],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "query findOne {\r\n    findOne(id : \"1\") {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}",
+                        "variables": ""
+                    },
+                    "options": {
+                        "raw": {
+                            "language": "text"
+                        }
+                    }
+                }
+            },
+            "response": [],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "createPlayer",
+            "request": {
+                "url": {
+                    "raw": "http://localhost:8080/graphql",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "graphql"
+                    ]
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "default"
+                    }
+                ],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "mutation create {\r\n    create(name : \"Suresh Raina\", team: CSK) {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}",
+                        "variables": ""
+                    },
+                    "options": {
+                        "raw": {
+                            "language": "text"
+                        }
+                    }
+                }
+            },
+            "response": [],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "updatePlayer",
+            "request": {
+                "url": {
+                    "raw": "http://localhost:8080/graphql",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "graphql"
+                    ]
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "default"
+                    }
+                ],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "mutation update {\r\n    update (id: \"1\", name : \"Sunil Narine\", team: KKR) {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}",
+                        "variables": ""
+                    },
+                    "options": {
+                        "raw": {
+                            "language": "text"
+                        }
+                    }
+                }
+            },
+            "response": [],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "deletePlayer",
+            "request": {
+                "url": {
+                    "raw": "http://localhost:8080/graphql",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "graphql"
+                    ]
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "default"
+                    }
+                ],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "mutation delete {\r\n    delete (id: \"5\") {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}",
+                        "variables": ""
+                    },
+                    "options": {
+                        "raw": {
+                            "language": "text"
+                        }
+                    }
+                }
+            },
+            "response": [],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "Create And Delete Player",
+            "request": {
+                "url": {
+                    "raw": "http://localhost:8080/graphql",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "graphql"
+                    ]
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "default"
+                    }
+                ],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "mutation delete {\r\n    create(name : \"Suresh Raina\", team: CSK) {\r\n        id\r\n        name\r\n        team\r\n    }\r\n    delete (id: \"1\") {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}",
+                        "variables": ""
+                    },
+                    "options": {
+                        "raw": {
+                            "language": "text"
+                        }
+                    }
+                }
+            },
+            "response": [],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "RestCallToGQLCall",
+            "request": {
+                "url": {
+                    "raw": "http://localhost:8080/graphql",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "graphql"
+                    ]
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "default"
+                    }
+                ],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "mutation delete {\r\n    create(name : \"Suresh Raina\", team: CSK) {\r\n        id\r\n        name\r\n        team\r\n    }\r\n    delete (id: \"1\") {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}",
+                        "variables": ""
+                    },
+                    "options": {
+                        "raw": {
+                            "language": "text"
+                        }
+                    }
+                }
+            },
+            "response": [],
+            "protocolProfileBehavior": {}
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": []
+}

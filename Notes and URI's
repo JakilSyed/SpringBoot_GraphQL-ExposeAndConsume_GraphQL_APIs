@@ -1,0 +1,49 @@
+Important Points to remember:
+1. Add GraphQL dependency
+2. Create schema.graphql file to define the schema and queries
+3. Annotate the controller with @Controller and controller methods with @QueryMapping
+4. Enable graphQl playground using below configuration
+    spring.graphql.graphiql.enabled = true
+    spring.graphql.graphiql.path = /graphiql
+5. PlayerController class shows how to expose GraphQl API and CallToPlayerController demonstrates how to consume existing GQL APi
+
+Access playground using below URL :
+http://localhost:8080/graphiql?path=/graphql
+
+Curls :
+
+1. findAll
+curl --location 'http://localhost:8080/graphql' \
+--header 'accept: application/json' \
+--header 'content-type: application/json' \
+--data '{"query":"query { findAll { id name team } }","variables":{}}'
+
+2. findOne
+curl --location 'http://localhost:8080/graphql' \
+--header 'Content-Type: application/json' \
+--data '{"query":"query findOne {\r\n    findOne(id : \"1\") {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}","variables":{}}'
+
+3. create
+curl --location 'http://localhost:8080/graphql' \
+--header 'Content-Type: application/json' \
+--data '{"query":"mutation create {\r\n    create(name : \"ABD\", team: CSK) {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}","variables":{}}'
+
+4. update
+curl --location 'http://localhost:8080/graphql' \
+--header 'Content-Type: application/json' \
+--data '{"query":"mutation update {\r\n    update (id: \"1\", name : \"Sunil Narine\", team: KKR) {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}","variables":{}}'
+
+5. delete
+curl --location 'http://localhost:8080/graphql' \
+--header 'Content-Type: application/json' \
+--data '{"query":"mutation delete {\r\n    delete (id: \"4\") {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}","variables":{}}'
+
+6. create and delete in single mutation
+curl --location 'http://localhost:8080/graphql' \
+--header 'Content-Type: application/json' \
+--data '{"query":"mutation delete {\r\n    create(name : \"Suresh Raina\", team: CSK) {\r\n        id\r\n        name\r\n        team\r\n    }\r\n    delete (id: \"1\") {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}","variables":{}}'
+
+7. Call the rest API which will call the GQL APi
+curl --location --request GET 'http://localhost:8080/rest-controller/findOne/2' \
+--header 'Content-Type: application/json' \
+--data '{"query":"mutation delete {\r\n    create(name : \"Suresh Raina\", team: CSK) {\r\n        id\r\n        name\r\n        team\r\n    }\r\n    delete (id: \"1\") {\r\n        id\r\n        name\r\n        team\r\n    }\r\n}","variables":{}}'
